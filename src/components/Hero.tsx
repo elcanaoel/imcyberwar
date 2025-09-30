@@ -97,6 +97,18 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
                 <i className="fas fa-terminal"></i>
               </button>
             </div>
+            <div className="profile-picture-section">
+              <div className="profile-picture-container">
+                <img 
+                  src="/profile-picture.jpg" 
+                  alt="cyberwar"
+                  className="profile-picture"
+                />
+                <div className="profile-picture-overlay">
+                  <span className="upload-hint">Profile Picture</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="hero-right">
