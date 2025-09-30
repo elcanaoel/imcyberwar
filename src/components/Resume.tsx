@@ -7,10 +7,9 @@ const Resume: React.FC = () => {
         <div className="resume-header">
           <h2>cyberwar</h2>
           <a 
-            href="https://docs.google.com/document/d/1aAkqmRcmJG_oCTp9YTfU7iqURPLDrh7IE-toPunIk0s/edit?pli=1&tab=t.0" 
+            href="/resume.pdf" 
             className="download-btn" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            download="Celestine_Joel_Resume.pdf"
           >
             Download
           </a>
