@@ -1,6 +1,9 @@
-import React from 'react';
-import Projects from './Projects';
-import Resume from './Resume';
+import React, { useState, Suspense, lazy } from 'react';
+import InteractiveTerminal from './InteractiveTerminal';
+
+// Lazy load components
+const Projects = lazy(() => import('./Projects'));
+const Resume = lazy(() => import('./Resume'));
 
 interface HeroProps {
   activeSection: 'projects' | 'resume';
@@ -8,6 +11,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
+  const [showTerminal, setShowTerminal] = useState(false);
+
   return (
     <section id="home" className="hero">
       <div className="hero-container">
@@ -62,13 +67,23 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
               <a href="https://linkedin.com/in/enejocoder" className="social-link" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
               </a>
+              <button 
+                className="terminal-button"
+                onClick={() => setShowTerminal(true)}
+                title="Open Interactive Terminal"
+              >
+                <i className="fas fa-terminal"></i>
+              </button>
             </div>
           </div>
         </div>
         <div className="hero-right">
-          {activeSection === 'projects' ? <Projects /> : <Resume />}
+          <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+            {activeSection === 'projects' ? <Projects /> : <Resume />}
+          </Suspense>
         </div>
       </div>
+      {showTerminal && <InteractiveTerminal />}
     </section>
   );
 };

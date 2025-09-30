@@ -4,12 +4,29 @@
   box-sizing: border-box;
 }
 
+// CSS Custom Properties
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --rain-color: rgba(102, 126, 234, 0.5);
+  --lightning-color: rgba(102, 126, 234, 0.3);
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #000000;
-  color: #e2e8f0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Rain and Thunder Animation */
@@ -28,10 +45,10 @@ body {
   position: absolute;
   width: 2px;
   height: 50px;
-  background: linear-gradient(to bottom, transparent, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.3));
+  background: linear-gradient(to bottom, transparent, var(--rain-color), var(--accent-secondary));
   animation: fall linear infinite;
   opacity: 0.7;
-  box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 3px var(--rain-color);
 }
 
 @keyframes fall {
@@ -51,7 +68,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 30%, rgba(102, 126, 234, 0.2), transparent 60%);
+  background: radial-gradient(circle at 50% 30%, var(--lightning-color), transparent 60%);
   pointer-events: none;
   z-index: 1;
   opacity: 0;
@@ -86,7 +103,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   padding: 2rem;
   position: relative;
   z-index: 10;
@@ -117,7 +134,7 @@ body {
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  color: #e2e8f0;
+  color: var(--text-primary);
   
   .typing-text {
     display: inline-block;
@@ -237,6 +254,61 @@ body {
     color: #667eea;
     transform: translateY(-3px);
   }
+}
+
+.terminal-button {
+  background: rgba(102, 126, 234, 0.1);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 8px;
+  color: #667eea;
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  
+  &:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    color: #fbbf24;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  
+  &::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-primary);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5rem;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Right Side - Content Sections */
