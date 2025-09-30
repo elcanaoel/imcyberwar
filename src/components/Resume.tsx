@@ -18,7 +18,7 @@ const Resume: React.FC = () => {
         
         <div className="resume-section">
           <p className="resume-intro">
-            As a Computer Engineering student and Software Engineer, I am passionate about using technology to solve real-world problems. With a strong foundation in Computer Science and Engineering principles and programming languages such as JavaScript, Python, C++ and Java. I am constantly seeking opportunities to learn and apply my skills in new and innovative ways.
+            As a Mathematical Science student and Software Engineer, I am passionate about using technology to solve real-world problems. With a strong foundation in Mathematical Science principles and programming languages such as JavaScript, Python, C++ and Java. I am constantly seeking opportunities to learn and apply my skills in new and innovative ways.
           </p>
           <p className="resume-intro">
             In addition to my academic pursuits, I have completed internships at leading technology companies, where I have gained valuable experience working on complex software projects. I am a team player who enjoys collaborating with others and sharing knowledge.
@@ -140,11 +140,11 @@ const Resume: React.FC = () => {
         <div className="resume-section">
           <h3>Education</h3>
           <div className="education-item">
-            <h4>B.Sc Computer Engineering at Obafemi Awolowo University</h4>
+            <h4>B.Sc Mathematics at Kogi state university, Anyigba</h4>
             <span className="edu-date">MAY 2025</span>
           </div>
           <div className="education-item">
-            <h4>Smith International Baptist Academy, Ogbomoso</h4>
+            <h4>Winners Comprehensive High school, Jalingo</h4>
             <span className="edu-date">SEP 2012 - JUL 2018</span>
           </div>
         </div>
@@ -169,7 +169,7 @@ const Resume: React.FC = () => {
               <span className="lang-level">PROFICIENT</span>
             </div>
             <div className="lang-item">
-              <span className="lang-name">Yoruba</span>
+              <span className="lang-name">Igala</span>
               <span className="lang-level">PROFICIENT</span>
             </div>
             <div className="lang-item">

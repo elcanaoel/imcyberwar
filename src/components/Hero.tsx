@@ -24,7 +24,7 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
               </span>
             </h1>
             <p className="hero-description">
-              I'm a Software Engineer and a junior Computer Engineering major with passion for problem-solving, strong foundation in computer science principles and proven track record of delivering high-quality and scalable code.
+              I'm a Software Engineer and a junior Mathematical Science major with passion for problem-solving, strong foundation in mathematical science principles and proven track record of delivering high-quality and scalable code.
             </p>
             <div className="hero-nav">
               <div className="nav-item">
