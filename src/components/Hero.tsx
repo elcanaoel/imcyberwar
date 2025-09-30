@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import InteractiveTerminal from './InteractiveTerminal';
 
 // Lazy load components
@@ -12,6 +12,28 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
   const [showTerminal, setShowTerminal] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Set hero as loaded after typing animation completes (3.5s + buffer)
+    const heroTimer = setTimeout(() => {
+      setHeroLoaded(true);
+    }, 4000);
+
+    return () => clearTimeout(heroTimer);
+  }, []);
+
+  useEffect(() => {
+    if (heroLoaded) {
+      // Add 6-second delay after hero completion before showing content
+      const contentTimer = setTimeout(() => {
+        setShowContent(true);
+      }, 6000);
+
+      return () => clearTimeout(contentTimer);
+    }
+  }, [heroLoaded]);
 
   return (
     <section id="home" className="hero">
@@ -78,9 +100,18 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
           </div>
         </div>
         <div className="hero-right">
-          <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-            {activeSection === 'projects' ? <Projects /> : <Resume />}
-          </Suspense>
+          {!showContent ? (
+            <div className="content-loading">
+              <div className="loading-spinner">
+                <div className="spinner"></div>
+                <p>Preparing content...</p>
+              </div>
+            </div>
+          ) : (
+            <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+              {activeSection === 'projects' ? <Projects /> : <Resume />}
+            </Suspense>
+          )}
         </div>
       </div>
       {showTerminal && <InteractiveTerminal />}
