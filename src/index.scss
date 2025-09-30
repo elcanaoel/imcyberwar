@@ -421,6 +421,18 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Profile Picture Transition Override */
+.profile-picture-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Right Side - Content Sections */
 .hero-right {
   max-height: 90vh;
@@ -513,6 +525,18 @@ body {
   margin-bottom: 1rem;
   font-family: 'Courier New', monospace;
   transition: all 0.3s ease;
+}
+
+/* Profile Picture Transition Override */
+.profile-picture-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .project-item:hover .project-tech {
@@ -945,4 +969,16 @@ body {
   object-position: center;
   border-radius: 50%;
   transition: all 0.3s ease;
+}
+
+/* Profile Picture Transition Override */
+.profile-picture-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

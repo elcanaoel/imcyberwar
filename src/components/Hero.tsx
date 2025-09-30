@@ -14,6 +14,7 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
   const [showTerminal, setShowTerminal] = useState(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [showProfilePicture, setShowProfilePicture] = useState(false);
 
   useEffect(() => {
     // Set hero as loaded after typing animation completes (3.5s + buffer)
@@ -21,7 +22,15 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
       setHeroLoaded(true);
     }, 4000);
 
-    return () => clearTimeout(heroTimer);
+    // Show profile picture after hero content appears (same timing as hero elements)
+    const profileTimer = setTimeout(() => {
+      setShowProfilePicture(true);
+    }, 3500);
+
+    return () => {
+      clearTimeout(heroTimer);
+      clearTimeout(profileTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -97,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({ activeSection, setActiveSection }) => {
                 <i className="fas fa-terminal"></i>
               </button>
             </div>
-            <div className="profile-picture-section">
+            <div className={`profile-picture-section ${showProfilePicture ? 'visible' : ''}`}>
               <div className="profile-picture-container">
                 <img 
                   src="/profile-picture.jpg" 
